@@ -55,6 +55,46 @@ overlay.addEventListener("click", testimonialsModalFunc);
 
 
 
+// portfolio variables
+const portfolioItem = document.querySelectorAll("[data-portfolio-item]");
+const portfolioModalContainer = document.querySelector("[data-portfolioModal-container]");
+const portfolioModalCloseBtn = document.querySelector("[data-portfolioModal-close-btn]");
+const portfolioOverlay = document.querySelector("[data-portfolioOverlay]");
+
+// modal variable
+const portfolioModalImg = document.querySelector("[data-portfolioModal-img]");
+const portfolioModalTitle = document.querySelector("[data-portfolioModal-title]");
+const portfolioModalText = document.querySelector("[data-portfolioModal-text]");
+
+// modal toggle function
+const portfolioModalFunc = function () {
+  portfolioModalContainer.classList.toggle("active");
+  portfolioOverlay.classList.toggle("active");
+}
+
+// add click event to all modal items
+for (let i = 0; i < portfolioItem.length; i++) {
+
+  portfolioItem[i].addEventListener("click", function () {
+
+    portfolioModalImg.src = this.querySelector("[data-portfolio-img]").src;
+    portfolioModalImg.alt = this.querySelector("[data-portfolio-img]").alt;
+    portfolioModalTitle.innerHTML = this.querySelector("[data-portfolio-title]").innerHTML;
+    portfolioModalText.innerHTML = this.querySelector("[data-portfolio-text]").innerHTML;
+
+    portfolioModalFunc();
+
+  });
+
+}
+
+
+// add click event to modal close button
+portfolioModalCloseBtn.addEventListener("click", portfolioModalFunc);
+portfolioOverlay.addEventListener("click", portfolioModalFunc);
+
+
+
 // custom select variables
 const select = document.querySelector("[data-select]");
 const selectItems = document.querySelectorAll("[data-select-item]");
